@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/data/jpa
+        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <jpa:repositories
+            base-package="com.pccw.immd.adminfunc._sample_.repository"
+            entity-manager-factory-ref="entityManagerFactory._sample_"
+    />
+
+    <bean id="datasource._sample_" class="oracle.jdbc.pool.OracleDataSource"
+          p:user="${_sample_.web.datasource.username}"
+          p:password="${_sample_.web.datasource.password}"
+          p:driverType="${_sample_.web.datasource.className}"
+          p:URL="${_sample_.web.datasource.url}"
+    />
+
+    <!-- Create default configuration for Hibernate -->
+    <bean id="hibernateJpaVendorAdapter._sample_"
+          class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+
+    <!-- Creates the bean that creates the JPA entity manager factory. -->
+    <bean id="entityManagerFactory._sample_" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+          p:persistenceUnitName="_sample_"
+          p:dataSource-ref="datasource._sample_"
+          p:jpaVendorAdapter-ref="hibernateJpaVendorAdapter._sample_"
+          p:packagesToScan="com.pccw.immd.adminfunc._sample_.domain"
+          p:jpaPropertyMap-ref="jpaProperties.adminfunc">
+    </bean>
+    <bean id="transactionManager._sample_" class="org.springframework.orm.jpa.JpaTransactionManager"
+          p:entityManagerFactory-ref="entityManagerFactory._sample_"
+    />
+
+</beans>
