@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>e-Services Admin Function - SMARTICS2</title>
+    <link rel="stylesheet" th:href="@{/smartics2/css/smartics2.css}"/>
+
+    <script th:src="@{/smartics2/js/smartics2.js}"></script>
+
+
+</head>
+<body>
+<div>
+
+    <div layout:fragment="content" style="">
+
+        <h3>Hello World!!!</h3>
+        <div id="root"></div>
+
+        <div sec:authentication="name">User Name xxx  </div>
+
+        <div th:text ="${#authentication.principal.displayName}"></div>
+        <a href="index.html" th:href="@{/AUTH/logout.html}">smartics2 Plugin </a>
+    </div>
+
+
+</div>
+</body>
+</html>
