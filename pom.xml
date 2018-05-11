@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.pccw.immd</groupId>
+        <artifactId>admin-func-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>submodule/admin-func/pom-parent.xml</relativePath>
+    </parent>
+
+    <groupId>com.pccw.immd</groupId>
+    <artifactId>admin-func-module-_sample_</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>Admin Functions Module</name>
+    <description>Smartics2 Administrative Function - _sample_</description>
+
+    <properties>
+        <!-- Default profile -->
+        <profileId>local</profileId>
+        <module.artifactId>admin-func-module</module.artifactId>
+        <module.version>1.0-SNAPSHOT</module.version>
+
+    </properties>
+    <!--<modules>-->
+        <!--<module>submodule/admin-func</module>-->
+    <!--</modules>-->
+    <dependencies>
+
+        <dependency>
+            <groupId>com.pccw.immd</groupId>
+            <artifactId>admin-func</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <classifier>classes</classifier>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- BEGIN - For compile, which are provided by running env. machine -->
+        <!-- TODO: xml.jar is not published on Maven repository. -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <!--<artifactId>jstl</artifactId>-->
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api -->
+        <!--<dependency>-->
+            <!--<groupId>javax.servlet.jsp</groupId>-->
+            <!--<artifactId>javax.servlet.jsp-api</artifactId>-->
+            <!--<version>${javax.jsp.version}</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
+
+        <!-- END - For compile, which are provided by running env. machine -->
+
+        <dependency>
+            <groupId>local</groupId>
+            <artifactId>oracle.ojdbc</artifactId>
+            <version>7</version>
+            <scope>system</scope>
+            <systemPath>${local.java.lib}/ojdbc7.jar</systemPath>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>install</id>
+            <modules>
+                <module>submodule/admin-func</module>
+            </modules>
+        </profile>
+    </profiles>
+</project>

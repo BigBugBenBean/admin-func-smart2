@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>e-Services Admin Function</title>
+
+    <script type="text/javascript" th:inline="javascript" th:if="${applicationFeeEnquiryDTO}">
+        /*<![CDATA[*/
+
+        $(document).ready(function () {
+            var list = [];
+
+            var applicationCodeList = [[${applicationFeeEnquiryDTO.applicationCodeList}]];
+            console.log('applicationCodeList');
+            console.log(applicationCodeList);
+
+            updateNavTitle();
+
+            if (isNotEmptyNullUndfined(applicationCodeList) && applicationCodeList.length > 0) {
+                jQuery.each(applicationCodeList, function (index, object) {
+                    var appName = object['engAppName'];
+                    var priceName = object['engPriceName'];
+                    var paymentCode = object['payCode'];
+                    var paymentDesc = object['paymentDesc'];
+                    var receiptPrintInd = object['receiptPrintInd'];
+                    var docIssueInd = object['docIssueInd'];
+                    var revenueCode = object['revenueCode'];
+
+                    var validFrom = new Date(object['validFrom']);
+                    var validTo = new Date(object['validTo']);
+                    var effectiveDate = new Date(object['effectiveDate']);
+
+
+                    var validFromFormatted =  moment(validFrom).format(UI_DATE_FORMAT);
+                    var validToFormatted = moment(validTo).format(UI_DATE_FORMAT);
+                    var effectiveDateFormatted =  moment(effectiveDate).format(UI_DATE_FORMAT);
+
+                    var newObj = {
+                        'Application Name': appName,
+                        'Price Name': priceName,
+                        'Valid From': validFromFormatted,
+                        'Valid To': validToFormatted,
+                        'Payment Code': paymentCode,
+                        'Payment Description': paymentDesc,
+                        'Effective Date': effectiveDateFormatted,
+                        'Receipt Print Indicator': receiptPrintInd,
+                        'Document Issue Indicator': docIssueInd,
+                        'Revenue Code': revenueCode
+                    };
+
+                    list.push(newObj);
+                });
+            }
+
+            var names = [
+                {
+                    'Application Name': 'Application for HKSAR Passport (For persons 16 years of age or above applying in Hong Kong)',
+                    'Price Name': 'Application for HKSAR Passport (For persons 16 years of age or above applying in Hong Kong)',
+                    'Valid From': '2017-01-01',
+                    'Valid To': '2018-01-01',
+                    'Payment Code': '500',
+                    'Payment Description': 'Application for HKSAR Passport ',
+                    'Effective Date': '2017-01-01',
+                    'Receipt Print Indicator': 'BOCI',
+                    'Document Issue Indicator': 'ImmD',
+                    'Revenue Code': '500'
+                },
+                {
+                    'Application Name': 'Application for HKSAR Passport (For persons 16 years of age or above applying in Hong Kong)',
+                    'Price Name': 'Application for HKSAR Passport (For persons 16 years of age or above applying in Hong Kong)',
+                    'Valid From': '2017-01-01',
+                    'Valid To': '2018-01-01',
+                    'Payment Code': '500',
+                    'Payment Description': 'Application for HKSAR Passport ',
+                    'Effective Date': '2017-01-01',
+                    'Receipt Print Indicator': 'BOCI',
+                    'Document Issue Indicator': 'ImmD',
+                    'Revenue Code': '500'
+                },
+                {
+                    'Application Name': 'Application for HKSAR Passport (For persons 16 years of age or above applying in Hong Kong)',
+                    'Price Name': 'Application for HKSAR Passport (For persons 16 years of age or above applying in Hong Kong)',
+                    'Valid From': '2017-01-01',
+                    'Valid To': '2018-01-01',
+                    'Payment Code': '500',
+                    'Payment Description': 'Application for HKSAR Passport ',
+                    'Effective Date': '2017-01-01',
+                    'Receipt Print Indicator': 'BOCI',
+                    'Document Issue Indicator': 'ImmD',
+                    'Revenue Code': '500'
+                }
+            ];
+
+            $("#appFeeEnqGrid").jsGrid({
+                width: '100%',
+                height: '100%',
+
+
+                sorting: false,
+                noDataContent: 'NO data',
+                selecting: false,
+
+                // paging: true,
+                // pageSize: 3,
+                // pageButtonCount: 5,
+                // pagerContainer: '#externalPager',
+                // pagerFormat: 'current page: {pageIndex} &nbsp;&nbsp; {first} {prev} {pages} {next} {last} &nbsp;&nbsp; total pages: {pageCount}',
+                // pagePrevText: 'prev',
+                // pageNextText: 'next',
+                // pageFirstText: 'first',
+                // pageLastText: 'last',
+                // pageNavigatorNextText: '&#8230;',
+                // pageNavigatorPrevText: '&#8230;',
+
+                data: list,
+
+                fields: [
+                    {name: 'Application Name', type: 'text', width: 100},
+                    {name: 'Price Name', type: 'text', width: 80},
+                    {name: 'Valid From', type: 'text', width: 60},
+                    {name: 'Valid To', type: 'text', width: 60},
+                    {name: 'Payment Code', type: 'text', width: 50},
+                    {name: 'Payment Description', type: 'text', width: 80},
+                    {name: 'Effective Date', type: 'text', width: 80},
+                    {name: 'Receipt Print Indicator', type: 'text', width: 80},
+                    {name: 'Document Issue Indicator', type: 'text', width: 80},
+                    {name: 'Revenue Code', type: 'text', width: 80}
+                ]
+            });
+
+        });
+
+        /*]]>*/
+    </script>
+
+</head>
+<body>
+<div>
+
+    <!--<div th:replace="fragments/header :: main-menu(${ROOT})"></div>-->
+
+    <div layout:fragment="header(${ROOT})"></div>
+
+    <div layout:fragment="content">
+        <div class="content-padding">
+            <div id="appFeeEnqGrid"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

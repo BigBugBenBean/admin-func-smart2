@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.pccw.immd</groupId>
+        <artifactId>admin-func-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>submodule/admin-func/pom-parent.xml</relativePath>
+    </parent>
+
+    <groupId>com.pccw.immd</groupId>
+    <artifactId>admin-func-init</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>Admin Functions Init POM</name>
+    <description>Smartics2 Administrative Function - init</description>
+
+    <modules>
+        <module>submodule/admin-func/pom-parent.xml</module>
+        <module>submodule/admin-func</module>
+        <module>./pom.xml</module>
+    </modules>
+</project>

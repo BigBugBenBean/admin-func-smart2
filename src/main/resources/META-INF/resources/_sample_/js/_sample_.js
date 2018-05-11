@@ -1,0 +1,1 @@
+var smartics2 = "smartics2";
