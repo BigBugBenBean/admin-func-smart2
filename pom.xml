@@ -11,12 +11,12 @@
     </parent>
 
     <groupId>com.pccw.immd</groupId>
-    <artifactId>admin-func-module-_sample_</artifactId>
+    <artifactId>admin-func-module-smartics2</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Admin Functions Module</name>
-    <description>Smartics2 Administrative Function - _sample_</description>
+    <description>Smartics2 Administrative Function - smartics2</description>
 
     <properties>
         <!-- Default profile -->

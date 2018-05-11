@@ -1,6 +1,6 @@
-package com.pccw.immd.adminfunc._sample_.repository;
+package com.pccw.immd.adminfunc.smartics2.repository;
 
-import com.pccw.immd.adminfunc._sample_.domain.SystemHoliday;
+import com.pccw.immd.adminfunc.smartics2.domain.SystemHoliday;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

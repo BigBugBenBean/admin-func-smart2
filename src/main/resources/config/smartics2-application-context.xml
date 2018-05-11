@@ -9,6 +9,6 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!--se2smartics2-->
-    <import resource="classpath:config/_sample_-web-context.xml"/>
-    <import resource="classpath:config/_sample_-database-context.xml"/>
+    <import resource="classpath:config/smartics2-web-context.xml"/>
+    <import resource="classpath:config/smartics2-database-context.xml"/>
 </beans>

@@ -1,7 +1,7 @@
-package com.pccw.immd.adminfunc._sample_.web.controller;
+package com.pccw.immd.adminfunc.smartics2.web.controller;
 
-import com.pccw.immd.adminfunc._sample_.domain.SystemHoliday;
-import com.pccw.immd.adminfunc._sample_.service.SystemHolidayService;
+import com.pccw.immd.adminfunc.smartics2.domain.SystemHoliday;
+import com.pccw.immd.adminfunc.smartics2.service.SystemHolidayService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/_sample_")
-public class _sample_Controller {
+@RequestMapping(value = "/smartics2")
+public class Smartics2Controller {
 
-	private static final Logger LOG = LoggerFactory.getLogger(_sample_Controller.class);
+	private static final Logger LOG = LoggerFactory.getLogger(Smartics2Controller.class);
 
     @Autowired
     @Qualifier("systemHolidayService.smartics2")
@@ -25,7 +25,7 @@ public class _sample_Controller {
     @GetMapping(value = "/index.html")
     public String indexPage(){
         List<SystemHoliday> list = systemHolidayService.listAll();
-        return "_sample_/index";
+        return "Smartics2/index";
     }
 
 

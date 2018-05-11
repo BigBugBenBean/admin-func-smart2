@@ -12,9 +12,9 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- For HTML controller -->
-    <context:component-scan base-package="com.pccw.immd.adminfunc._sample_.web.controller"/>
+    <context:component-scan base-package="com.pccw.immd.adminfunc.smartics2.web.controller"/>
 
     <!-- For Backend service -->
-    <context:component-scan base-package="com.pccw.immd.adminfunc._sample_.service.impl"/>
+    <context:component-scan base-package="com.pccw.immd.adminfunc.smartics2.service.impl"/>
 
 </beans>

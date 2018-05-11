@@ -1,8 +1,8 @@
-package com.pccw.immd.adminfunc._sample_.service.impl;
+package com.pccw.immd.adminfunc.smartics2.service.impl;
 
-import com.pccw.immd.adminfunc._sample_.domain.SystemHoliday;
-import com.pccw.immd.adminfunc._sample_.repository.UmSystemHolidayRepository;
-import com.pccw.immd.adminfunc._sample_.service.SystemHolidayService;
+import com.pccw.immd.adminfunc.smartics2.domain.SystemHoliday;
+import com.pccw.immd.adminfunc.smartics2.repository.UmSystemHolidayRepository;
+import com.pccw.immd.adminfunc.smartics2.service.SystemHolidayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

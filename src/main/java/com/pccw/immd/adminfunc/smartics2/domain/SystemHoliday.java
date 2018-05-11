@@ -1,4 +1,4 @@
-package com.pccw.immd.adminfunc._sample_.domain;
+package com.pccw.immd.adminfunc.smartics2.domain;
 
 
 import javax.persistence.Column;
