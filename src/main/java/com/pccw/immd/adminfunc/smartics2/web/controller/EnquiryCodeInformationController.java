@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-@RequestMapping(value = "/SMARTICS-2/enquiry")
+@RequestMapping(value = "/smartics2/enquiry")
 public class EnquiryCodeInformationController {
 
     @GetMapping(value = "/enquiryCodeInformation.do")
