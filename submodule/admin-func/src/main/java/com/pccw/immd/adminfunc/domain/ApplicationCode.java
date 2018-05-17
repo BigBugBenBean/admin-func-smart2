@@ -13,8 +13,8 @@ import java.util.Date;
 /**
  * Created by Dell on 29/1/2018.
  */
-//@Entity
-//@Table(name = "UM_APPLICATION_ID")
+@Entity
+@Table(name = "UM_APPLICATION_ID")
 public class ApplicationCode {
     @Id
 //    @GeneratedValue(strategy = GenerationType.AUTO)

@@ -28,8 +28,6 @@ public class SurgeControlController {
 
     @GetMapping(value = "/e-Services-2/maintenance/surgeControl.do")
     public String surgeControlPage(HttpServletRequest request) {
-
-
         return "/eServices2/SurgeControl/surge-control";
     }
 

@@ -36,10 +36,10 @@
     -->
 
     <bean primary="true" id="datasource.adminfunc" class="oracle.jdbc.pool.OracleDataSource"
-          p:user="${smartics2.web.datasource.username}"
-          p:password="${smartics2.web.datasource.password}"
-          p:driverType="${smartics2.web.datasource.className}"
-          p:URL="${smartics2.web.datasource.url}"
+          p:user="${eservice2.web.datasource.username}"
+          p:password="${eservice2.web.datasource.password}"
+          p:driverType="${eservice2.web.datasource.className}"
+          p:URL="${eservice2.web.datasource.url}"
     />
 
     <!-- Create default configuration for Hibernate -->

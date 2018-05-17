@@ -5,8 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 
-//@Entity
-//@Table(name = "UM_AUDIT_TRAIL_ACTION")
+@Entity
+@Table(name = "UM_AUDIT_TRAIL_ACTION")
 public class AuditTrailAction extends AuditLog {
     @Column(name = "TABLE_NAME", length = 100)
     public String tableName;

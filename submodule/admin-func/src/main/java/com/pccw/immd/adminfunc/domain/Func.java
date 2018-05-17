@@ -12,8 +12,8 @@ import javax.persistence.Table;
  **  Author      : Dell
  **
  */
-//@Entity
-//@Table(name = "UM_FUNC")
+@Entity
+@Table(name = "UM_FUNC")
 public class Func {
 
     @Id

@@ -5,8 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-//@Entity
-//@Table(name = "UMAUDIT_ACCESS_SEARCH")
+@Entity
+@Table(name = "UMAUDIT_ACCESS_SEARCH")
 public class AuditAccessSearch {
     @Id
     @Column(name = "ACCESS_ID")

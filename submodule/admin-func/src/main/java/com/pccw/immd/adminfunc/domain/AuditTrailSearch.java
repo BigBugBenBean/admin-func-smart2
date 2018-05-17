@@ -4,8 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-//@Entity
-//@Table(name = "UM_AUDIT_TRAIL_SEARCH")
+@Entity
+@Table(name = "UM_AUDIT_TRAIL_SEARCH")
 public class AuditTrailSearch extends AuditLog {
     //    @Enumerated(EnumType.STRING)
     @Column(name = "ACTION_TYPE", length = 10)

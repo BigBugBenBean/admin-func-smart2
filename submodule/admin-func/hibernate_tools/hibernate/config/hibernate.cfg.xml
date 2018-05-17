@@ -4,13 +4,13 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:oracle:thin:@//10.26.213.89:1521/ECDEV</property>
+        <property name="connection.url">jdbc:oracle:thin:@//localhost:1521/xe</property>
         <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
-        <property name="connection.username">SMDBA</property>
-        <property name="connection.password">SC2password1</property>
+        <property name="connection.username">se2adminfunc</property>
+        <property name="connection.password">password</property>
         <property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
-        <property name="default_schema">SMDBA</property>
+        <property name="default_schema">SE2ADMINFUNC</property>
     </session-factory>
 </hibernate-configuration>

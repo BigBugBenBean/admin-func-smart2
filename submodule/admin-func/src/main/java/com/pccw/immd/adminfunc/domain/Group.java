@@ -14,8 +14,8 @@ import javax.persistence.Table;
  **  Author      : Dell
  **
  */
-//@Entity
-//@Table(name = "UM_GROUP")
+@Entity
+@Table(name = "UM_GROUP")
 public class Group {
 
     @Id
