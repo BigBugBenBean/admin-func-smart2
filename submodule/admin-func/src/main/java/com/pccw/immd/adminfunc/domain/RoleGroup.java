@@ -7,11 +7,11 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Entity
-@Table(name = "UM_ROLE_GROUP")
+//@Entity
+//@Table(name = "UM_ROLE_GROUP")
 public class RoleGroup implements Serializable {
 
-    @EmbeddedId
+//    @EmbeddedId
     private RoleGroupId id;
 
     public RoleGroupId getId() {

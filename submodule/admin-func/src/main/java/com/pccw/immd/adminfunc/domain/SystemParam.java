@@ -5,8 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "SYSTEM_PARAM")
+//@Entity
+//@Table(name = "SYSTEM_PARAM")
 public class SystemParam {
 
     @Id

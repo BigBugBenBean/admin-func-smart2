@@ -6,8 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
-@Entity
-@Table(name = "UMAUDIT_ACCESS")
+//@Entity
+//@Table(name = "UMAUDIT_ACCESS")
 public class AuditAccess {
     @Id
     @Column(name = "ACCESS_ID")

@@ -7,8 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "UM_ACCESS_CONTROL_GLOBAL_PARAM")
+//@Entity
+//@Table(name = "UM_ACCESS_CONTROL_GLOBAL_PARAM")
 public class AccessControlGlobalParam {
 
     @Id

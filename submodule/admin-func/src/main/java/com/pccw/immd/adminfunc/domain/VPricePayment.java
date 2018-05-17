@@ -6,8 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
-@Entity
-@Table(name = "V_UM_PRICE_PAYMENT")
+//@Entity
+//@Table(name = "V_UM_PRICE_PAYMENT")
 public class VPricePayment {
     @Id
     @Column(name = "ROW_ID")

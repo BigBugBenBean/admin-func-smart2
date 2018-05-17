@@ -8,8 +8,8 @@ import javax.persistence.Table;
 /**
  * Created by Dell on 29/1/2018.
  */
-@Entity
-@Table(name = "UM_FREE_TEXT_TEMPLATE")
+//@Entity
+//@Table(name = "UM_FREE_TEXT_TEMPLATE")
 public class FreeTextTemplate {
     @Id
     @Column(name = "FTT_ID", length = 4)

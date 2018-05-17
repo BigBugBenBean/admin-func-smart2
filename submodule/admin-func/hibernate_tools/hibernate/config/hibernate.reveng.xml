@@ -2,5 +2,32 @@
 <!DOCTYPE hibernate-reverse-engineering
         SYSTEM "hibernate/dtd/hibernate-reverse-engineering-3.0.dtd" >
 <hibernate-reverse-engineering>
-    <schema-selection match-schema="SE2ADMINFUNC" match-table="UM_.*"  />
+    <schema-selection match-schema="SMDBA" match-table="UM_.*"  />
+
+    <type-mapping>
+        <!--<sql-type jdbc-type="NUMERIC" precision="1" hibernate-type="int" not-null="true"/>-->
+        <!--<sql-type jdbc-type="NUMERIC" precision="1" hibernate-type="integer" not-null="false"/>-->
+        <!--<sql-type jdbc-type="NUMERIC" precision="6" scale="0" hibernate-type="int" not-null="true"/>-->
+        <!--<sql-type jdbc-type="NUMERIC" precision="6" scale="0" hibernate-type="integer" not-null="false"/>-->
+        <!--<sql-type jdbc-type="NUMERIC" precision="11" scale="0" hibernate-type="long" not-null="true"/>-->
+        <!--<sql-type jdbc-type="NUMERIC" precision="11" scale="0" hibernate-type="java.lang.Long" not-null="false"/>-->
+
+        <!--<sql-type jdbc-type="DATE" hibernate-type="java.time.LocalDate"/>-->
+        <!--<sql-type jdbc-type="TIMESTAMP" hibernate-type="java.time.LocalDateTime"/>-->
+        <!--<sql-type jdbc-type="TIMESTAMP(6)" hibernate-type="java.time.LocalDateTime"/>-->
+        <!--<sql-type jdbc-type="TIMESTAMP" length="6" hibernate-type="java.time.LocalDateTime"/>-->
+        <!-- Work around for Oracle Type conversion -->
+        <!--<sql-type jdbc-type="OTHER" hibernate-type="java.time.LocalDateTime"/>-->
+        <sql-type jdbc-type="TIMESTAMP" hibernate-type="java.sql.Timestamp"/>
+        <sql-type jdbc-type="DATE" hibernate-type="java.sql.Date"/>
+        <sql-type jdbc-type="OTHER" hibernate-type="java.sql.Date"/>
+
+        <!-- ne marche pas avec Postgres driver 42.0 -->
+        <!--<sql-type jdbc-type="TIMESTAMP_WITH_TIMEZONE" hibernate-type="java.time.ZonedDateTime"/>-->
+
+        <!--
+        org.hibernate.tool.hbm2x.pojo.BasicPOJOClass.buildColumnAnnotation
+        Generation code pas en phase avec spec JPA pour val defaut @Column( precision, scale )...
+         -->
+    </type-mapping>
 </hibernate-reverse-engineering>

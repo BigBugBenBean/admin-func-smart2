@@ -12,8 +12,8 @@ import javax.persistence.*;
  * *
  */
 
-@Entity
-@Table(name = "UM_GROUP_FUNC")
+//@Entity
+//@Table(name = "UM_GROUP_FUNC")
 public class GroupFunc {
 
     @EmbeddedId
