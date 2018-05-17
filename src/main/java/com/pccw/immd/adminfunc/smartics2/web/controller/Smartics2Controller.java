@@ -25,7 +25,7 @@ public class Smartics2Controller {
     @GetMapping(value = "/index.html")
     public String indexPage(){
         List<SystemHoliday> list = systemHolidayService.listAll();
-        return "Smartics2/index";
+        return "smartics2/index";
     }
 
 
