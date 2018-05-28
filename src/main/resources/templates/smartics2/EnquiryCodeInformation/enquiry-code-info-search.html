@@ -2,24 +2,22 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
 <head>
     <meta charset="UTF-8"></meta>
-    <title></title>
+    <title>SMARTICS-2 Admin Function</title>
 
     <link rel="stylesheet" href="/adminfunc/css/enquiry-code.css"/>
+    <script th:src="@{/smartics2/js/enquiry-code-info.js}"></script>
+    <script th:src="@{/smartics2/js/common.js}"></script>
 
-    <script th:inline="javascript" th:if="${enquiryCodeInformationDTO}">
-    /*<![CDATA[*/
-
-    $(document).ready(function () {
-    // var jobList = [];
-    // var statusList = [];
-    console.log('ABI1');
-    var dtotest = [[${enquiryCodeInformationDTO}]];
-    console.log('dto: ', dtotest);
-    console.log('ABI2');
-    });
-
-    /*]]>*/
-    </script>
+    <!--<script th:inline="javascript" th:if="${enquiryCodeInformationDTO}">-->
+    <!--$(document).ready(function () {-->
+        <!--var submitBtnDom = jQuery('#submitBtn');-->
+        <!--submitBtnDom.on('click', function () {-->
+            <!--var form =jQuery('#searchForm');-->
+            <!--console.log(form);-->
+            <!--form.submit();-->
+        <!--});-->
+    <!--});-->
+    <!--</script>-->
 
 </head>
 <body>
@@ -30,7 +28,7 @@
     <div layout:fragment="content">
         <div class="content-padding">
             <div>
-                <form th:action="@{/smartics2/enquiry/enquiryCodeInformationSearchResult}" th:object="${enquiryCodeInformationDTO}">
+                <form id="searchForm" th:action="@{/smartics2/enquiry/enquiryCodeInformationSearchResult.do}" th:object="${enquiryCodeInformationDTO}"  method="post">
                     <div>
                         <div>
                             <b><span th:text="${#messages.msg('umps.adminfunc.common.searchCriteria')}"></span></b>
@@ -46,16 +44,16 @@
                                 </b>
                             </div>
                             <div class="flex-item-7">
-                                <select>
-                                    <option>-- Please select an appointment type --</option>
-                                    <option th:each="appointmentType : *{appointmentTypes}" th:value="${appointmentType.appId}" th:text="${appointmentType.engAppName}" />
+                                <select id="appointmentType" name="appointmentType">
+                                    <option value="">-- Please select an appointment type --</option>
+                                    <option value="[ROPbooking] ROP Appointment Booking &amp; Form Pre-fill">[ROPbooking] ROP Appointment Booking &amp; Form Pre-fill</option>
                                 </select>
                             </div>
                         </div>
                         <div class="RowSeparatorThin"></div>
                         <div class="flex-container search-padding">
                             <div class="flex-item-1">
-                                <input type="radio" name="ENQ_SEARCH" />
+                                <input type="radio" name="radioSearchCriteria" onclick="clearFields('hkic')"/>
                             </div>
                             <div class="flex-item-3 search-field-left">
                                 <b>
@@ -63,13 +61,13 @@
                                 </b>
                             </div>
                             <div class="flex-item-7">
-                                <input type="text" />
+                                <input id="hkic" name="hkic" type="text" onclick="clearFields('hkic')"/>
                             </div>
                         </div>
                         <div class="RowSeparatorThin"></div>
                         <div class="flex-container search-padding">
                             <div class="flex-item-1">
-                                <input type="radio" name="ENQ_SEARCH" />
+                                <input type="radio" name="radioSearchCriteria" onclick="clearFields('tdNo')"/>
                             </div>
                             <div class="flex-item-3 search-field-left">
                                 <b>
@@ -77,7 +75,7 @@
                                 </b>
                             </div>
                             <div class="flex-item-7">
-                                <input type="text" />
+                                <input id="tdNo" name="tdNo" type="text" onclick="clearFields('tdNo')"/>
                             </div>
                         </div>
                         <div class="flex-container search-padding">
@@ -91,11 +89,11 @@
                             </div>
                             <div class="flex-item-7">
                                 <span th:text="${#messages.msg('umps.adminfunc.enquiryCodeInfo.day')}"></span>
-                                <input type="text" style="width: 30px;" />
+                                <input id="dobDay"  name="dobDay" type="number" style="width: 30px;" maxlength="2" onclick="clearFields('dobDay')"/>
                                 <span th:text="${#messages.msg('umps.adminfunc.enquiryCodeInfo.month')}"></span>
-                                <input type="text" style="width: 30px;" />
+                                <input id="dobMonth" name="dobMonth" type="number" style="width: 30px;" maxlength="2" onclick="clearFields('dobMonth')"/>
                                 <span th:text="${#messages.msg('umps.adminfunc.enquiryCodeInfo.year')}"></span>
-                                <input type="text" style="width: 100px;" />
+                                <input id="dobYear" name="dobYear" type="number" style="width: 100px;" maxlength="4" onclick="clearFields('dobYear')"/>
                             </div>
                         </div>
                         <div class="RowSeparatorThin"></div>
@@ -104,9 +102,9 @@
                     <div class="flex-container" style="padding-top: 10px;">
                         <div style="flex: auto;"></div>
                         <div style="padding: 15px;">
-                            <a th:href="@{/smartics2/enquiry/enquiryCodeInformationSearchResult.do}">
+                            <!--<a th:href="@{/smartics2/enquiry/enquiryCodeInformationSearchResult.do}">-->
                                 <input class="SmallButtonStyle pointer" id="submitBtn" style="min-width: 80px;" type="button" th:value="${#messages.msg('umps.adminfunc.common.search')}" />
-                            </a>
+                            <!--</a>-->
                         </div>
                     </div>
                 </form>

@@ -2,46 +2,26 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
 <head>
     <meta charset="UTF-8"></meta>
-    <title>e-Services Admin Function</title>
+    <title>SMARTICS-2 Admin Function</title>
 
     <link rel="stylesheet" href="/adminfunc/css/enquiry-code.css"/>
 
-    <!--<script th:inline="javascript" th:if="${scheduleJobDetailDTO}">-->
-    <!--/*<![CDATA[*/-->
+    <script th:inline="javascript" th:if="${enquiryCodeInformationDTO}">
+    /*<![CDATA[*/
 
-    <!--$(document).ready(function () {-->
-    <!--// var jobList = [];-->
-    <!--// var statusList = [];-->
+    $(document).ready(function () {
+        console.log('ABI1');
+        var dto = [[${enquiryCodeInformationDTO}]];
+        console.log('dto: ', dto);
+        console.log('ABI2');
 
-    <!--var scheduleJobDetailDTO = [[${scheduleJobDetailDTO}]];-->
-    <!--console.log('scheduleJobDetailDTO');-->
-    <!--console.log(scheduleJobDetailDTO);-->
-    <!---->
-    <!--});-->
+        var dob = '';
+        if (dto.dobDay && dto.dobMonth && dob.Year) {
+            dob = dto.dobDay + '/' + dto.dobMonth + '/' + dto.dobYear;
+        }
+        $("#dobSpan").text(dob);
 
-    <!--/*]]>*/-->
-    <!--</script>-->
-
-    <script>
-        $(document).ready(function () {
-            var list = [];
-
-            list = [
-                {
-                    'txDateTime': '30-11-2017 14:24:43',
-                    'appType': 'ROPbooking',
-                    'appDateTime': '30-11-2017 14:24:43',
-                    'appointmentOffice': 'ROP-HKO',
-                    'applicantID': 'A123456',
-                    'dob': '',
-                    'trn': '5791711306000005',
-                    'channel': 'W',
-                    'status': 'Valid',
-                    'enquiryCode': '1111'
-                }
-            ];
-
-            var grid = $("#dataGrid");
+        var grid = $("#dataGrid");
             var gridConfig = {
                 width: '100%',
                 height: '260px',
@@ -56,7 +36,7 @@
                 // pageLoading: true,
                 // pageSize: recordPerPage,
 
-                data: list,
+                data: dto.searchResults,
 
                 // controller: {
                 //     loadData: function (filter) {
@@ -69,11 +49,11 @@
                 // },
 
                 fields: [
-                    { name: 'txDateTime', title: 'Tx Date Time', type: 'text', width: 20, headerTemplate: commonHeader },
+                    { name: 'transDateTime', title: 'Tx Date Time', type: 'text', width: 20, headerTemplate: commonHeader },
                     { name: 'appType', title: 'App Type', type: 'text', width: 20, headerTemplate: commonHeader },
                     { name: 'appDateTime', title: 'App Date Time', type: 'text', width: 20, headerTemplate: commonHeader },
                     { name: 'appointmentOffice', title: 'Appointment Office', type: 'text', width: 20, headerTemplate: commonHeader },
-                    { name: 'applicantID', title: 'Applicant ID', type: 'text', width: 20, headerTemplate: commonHeader },
+                    { name: 'applicantId', title: 'Applicant ID', type: 'text', width: 20, headerTemplate: commonHeader },
                     { name: 'dob', title: 'DOB', type: 'text', width: 20, headerTemplate: commonHeader },
                     { name: 'trn', title: 'TRN', type: 'text', width: 30, headerTemplate: commonHeader },
                     { name: 'channel', title: 'Channel', type: 'text', width: 20, headerTemplate: commonHeader },
@@ -82,9 +62,10 @@
                 ]
             };
             grid.jsGrid(gridConfig);
-        });
-    </script>
+    });
 
+    /*]]>*/
+    </script>
 </head>
 <body>
 <div>
@@ -94,84 +75,92 @@
     <div layout:fragment="content">
         <div class="content-padding">
             <div>
-                <div>
-                    <div class="flex-container">
-                        <div class="flex-item-1">
-                            <b><span th:text="${#messages.msg('umps.adminfunc.common.searchResult')}"></span></b>
-                        </div>
-                        <div class="flex-item-auto">
-                            <!--<input class="SmallButtonStyle pointer" id="" style="min-width: 80px;" type="button" th:value="${#messages.msg('umps.adminfunc.common.printThisPage')}" />-->
-                        </div>
-                    </div>
+                <form th:object="${enquiryCodeInformationDTO}">
                     <div>
-                        <div class="RowSeparatorThin"></div>
                         <div class="flex-container">
-                            <div class="flex-item-2 search-result-left"><b><span th:text="${#messages.msg('umps.adminfunc.enquiryCodeInfo.hkic')}"></span></b></div>
-                            <div class="flex-item-7 search-result-right">
-                                <span id="">a123456</span>
+                            <div class="flex-item-1">
+                                <b><span th:text="${#messages.msg('umps.adminfunc.common.searchResult')}"></span></b>
+                            </div>
+                            <div class="flex-item-auto">
+                                <!--<input class="SmallButtonStyle pointer" id="" style="min-width: 80px;" type="button" th:value="${#messages.msg('umps.adminfunc.common.printThisPage')}" />-->
                             </div>
                         </div>
-                        <div class="RowSeparatorThin"></div>
-                        <div class="flex-container">
-                            <div class="flex-item-2 search-result-left"><b><span th:text="${#messages.msg('umps.adminfunc.enquiryCodeInfo.tdNo')}"></span></b></div>
-                            <div class="flex-item-7 search-result-right">
-                                <span id=""></span>
+                        <div>
+                            <div class="RowSeparatorThin"></div>
+                            <div class="flex-container">
+                                <div class="flex-item-2 search-result-left"><b><span th:text="${#messages.msg('umps.adminfunc.enquiryCodeInfo.hkic')}"></span></b></div>
+                                <div class="flex-item-7 search-result-right">
+                                    <span th:text="*{hkic}"/>
+                                    <input type="hidden" th:field="*{hkic}"/>
+                                </div>
                             </div>
-                        </div>
-                        <div class="RowSeparatorThin"></div>
-                        <div class="flex-container">
-                            <div class="flex-item-2 search-result-left"><b><span th:text="${#messages.msg('umps.adminfunc.enquiryCodeInfo.dob')}"></span></b></div>
-                            <div class="flex-item-7 search-result-right">
-                                <span id=""></span>
+                            <div class="RowSeparatorThin"></div>
+                            <div class="flex-container">
+                                <div class="flex-item-2 search-result-left"><b><span th:text="${#messages.msg('umps.adminfunc.enquiryCodeInfo.tdNo')}"></span></b></div>
+                                <div class="flex-item-7 search-result-right">
+                                    <span th:text="*{tdNo}"/>
+                                    <input type="hidden" th:field="*{tdNo}"/>
+                                </div>
                             </div>
-                        </div>
-                        <div class="RowSeparatorThin"></div>
-                        <div class="flex-container">
-                            <div class="flex-item-2 search-result-left"><b><span th:text="${#messages.msg('umps.adminfunc.enquiryCodeInfo.appointmentType')}"></span></b></div>
-                            <div class="flex-item-7 search-result-right">
-                                <span id="">[ROPbooking] ROP Appointment Booking  Form Pre-fill</span>
+                            <div class="RowSeparatorThin"></div>
+                            <div class="flex-container">
+                                <div class="flex-item-2 search-result-left"><b><span th:text="${#messages.msg('umps.adminfunc.enquiryCodeInfo.dob')}"></span></b></div>
+                                <div class="flex-item-7 search-result-right">
+                                    <!--<span th:text="*{dobDay} + '/' + *{dobMonth} + '/' + *{dobYear}"/>-->
+                                    <span id="dobSpan"></span>
+                                    <input type="hidden" th:field="*{dobDay}"/>
+                                    <input type="hidden" th:field="*{dobMonth}"/>
+                                    <input type="hidden" th:field="*{dobYear}"/>
+                                </div>
                             </div>
-                        </div>
-                        <!--<div class="RowSeparatorThin"></div>-->
+                            <div class="RowSeparatorThin"></div>
+                            <div class="flex-container">
+                                <div class="flex-item-2 search-result-left"><b><span th:text="${#messages.msg('umps.adminfunc.enquiryCodeInfo.appointmentType')}"></span></b></div>
+                                <div class="flex-item-7 search-result-right">
+                                    <span th:text="*{appointmentType}"/>
+                                    <input type="hidden" th:field="*{appointmentType}"/>
+                                </div>
+                            </div>
+                            <!--<div class="RowSeparatorThin"></div>-->
 
 
-                        <div class="RowSeparator"></div>
+                            <div class="RowSeparator"></div>
+                        </div>
                     </div>
-                </div>
 
-                <div style="margin-top: 1em;  ">
-                    <!--<div class="flex-container grid-page-header">-->
-                    <!--<div style="flex: auto;"></div>-->
-                    <!--<div>-->
-                    <!--<span class="grid-page-header-text" th:text="${#messages.msg('umps.adminfunc.common.pagination.recordPerPage')}"></span>-->
-                    <!--<span>-->
-                    <!--<select id="totalPager"></select>-->
-                    <!--</span>-->
-                    <!--<span class="grid-page-header-text" style="padding-left: 10px;" th:text="${#messages.msg('umps.adminfunc.common.pagination.pageNo')}"></span>-->
-                    <!--<span>-->
-                    <!--<select id="numPager"></select>-->
-                    <!--</span>-->
-                    <!--</div>-->
-                    <!--</div>-->
-                    <div>
-                        <div id="dataGrid"></div>
+                    <div style="margin-top: 1em;  ">
+                        <!--<div class="flex-container grid-page-header">-->
+                        <!--<div style="flex: auto;"></div>-->
+                        <!--<div>-->
+                        <!--<span class="grid-page-header-text" th:text="${#messages.msg('umps.adminfunc.common.pagination.recordPerPage')}"></span>-->
+                        <!--<span>-->
+                        <!--<select id="totalPager"></select>-->
+                        <!--</span>-->
+                        <!--<span class="grid-page-header-text" style="padding-left: 10px;" th:text="${#messages.msg('umps.adminfunc.common.pagination.pageNo')}"></span>-->
+                        <!--<span>-->
+                        <!--<select id="numPager"></select>-->
+                        <!--</span>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <div>
+                            <div id="dataGrid"></div>
+                        </div>
+                        <div class="grid-page-header" style="height: 30px;">&nbsp;</div>
                     </div>
-                    <div class="grid-page-header" style="height: 30px;">&nbsp;</div>
-                </div>
 
-                <div class="flex-container" style="padding-top: 30px;">
-                    <div style="flex: auto;"></div>
-                    <div>
-                        <a th:href="@{/SMARTICS-2/enquiry/enquiryCodeInformation.do}">
-                            <input class="SmallButtonStyle pointer" id="" style="min-width: 80px;" type="button" th:value="${#messages.msg('umps.adminfunc.common.backToSearchCriteria')}" />
-                        </a>
+                    <div class="flex-container" style="padding-top: 30px;">
+                        <div style="flex: auto;"></div>
+                        <div>
+                            <a th:href="@{/smartics2/enquiry/enquiryCodeInformation.do}">
+                                <input class="SmallButtonStyle pointer" id="" style="min-width: 80px;" type="button" th:value="${#messages.msg('umps.adminfunc.common.backToSearchCriteria')}" />
+                            </a>
+                        </div>
                     </div>
-                </div>
 
-                <div style="padding-top: 10px;">
-                    <div th:replace="fragments/appointment-booking-enquiry-footer::appointmentBookingEnquiryFooter" ></div>
-                </div>
-
+                    <div style="padding-top: 10px;">
+                        <div th:replace="fragments/appointment-booking-enquiry-footer::appointmentBookingEnquiryFooter" ></div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
