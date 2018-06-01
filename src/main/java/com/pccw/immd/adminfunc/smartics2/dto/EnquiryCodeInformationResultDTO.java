@@ -4,7 +4,6 @@ import com.pccw.immd.adminfunc.smartics2.util.DateUtils;
 import com.pccw.immd.commons.dto.BaseDTO;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 public class EnquiryCodeInformationResultDTO extends BaseDTO {
 
@@ -99,16 +98,16 @@ public class EnquiryCodeInformationResultDTO extends BaseDTO {
         this.enquiryCode = enquiryCode;
     }
 
-    public EnquiryCodeInformationResultDTO(Date transDateTime, String appType, Date appDateTime, String appointmentOffice, short applicantId, String dob, BigDecimal trn, String channel, String status, short enquiryCode) {
-        this.transDateTime = DateUtils.format(transDateTime);
+    public EnquiryCodeInformationResultDTO(String transDateTime, String appType, String appDateTime, String appointmentOffice, short applicantId, String dob, BigDecimal trn, String channel, String status, String enquiryCode) {
+        this.transDateTime = transDateTime;
         this.appType = appType;
-        this.appDateTime = DateUtils.format(appDateTime);
+        this.appDateTime = appDateTime;
         this.appointmentOffice = appointmentOffice;
         this.applicantId = String.valueOf(applicantId);
-        this.dob = dob;
+        this.dob = DateUtils.format(dob);
         this.trn = String.valueOf(trn);
         this.channel = channel;
         this.status = status;
-        this.enquiryCode = String.valueOf(enquiryCode);
+        this.enquiryCode = enquiryCode;
     }
 }

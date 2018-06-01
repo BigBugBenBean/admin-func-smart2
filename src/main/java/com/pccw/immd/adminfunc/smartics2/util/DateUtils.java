@@ -1,10 +1,14 @@
 package com.pccw.immd.adminfunc.smartics2.util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 public class DateUtils {
+    private static final Logger LOG = LoggerFactory.getLogger(DateUtils.class);
 
     public static final String DATE_INPUT_FORMAT = "dd/MM/yyyy";
     private static SimpleDateFormat sdf = null;
@@ -14,6 +18,7 @@ public class DateUtils {
         try{
             return sdf.parse(dateStr);
         }catch (Exception e){
+            LOG.debug("ERROR: Date parse error. " + e.getMessage());
             return null;
         }
     }
@@ -23,6 +28,7 @@ public class DateUtils {
         try{
             return sdf.format(date);
         }catch (Exception e){
+            LOG.debug("ERROR: Date format error. " + e.getMessage());
             return null;
         }
     }
@@ -40,5 +46,14 @@ public class DateUtils {
         Calendar c2 = Calendar.getInstance();
         c2.setTime(date2);
         return c2.equals(c1);
+    }
+
+    public static String format(String dob){
+        try {
+            return dob.substring(6) + "/" + dob.substring(4, 6) + "/" + dob.substring(0, 4);
+        } catch (Exception e){
+            LOG.debug("ERROR: String Date format error. " + e.getMessage());
+            return null;
+        }
     }
 }

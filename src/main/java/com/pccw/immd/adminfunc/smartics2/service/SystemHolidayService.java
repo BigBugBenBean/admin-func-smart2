@@ -4,7 +4,7 @@ import com.pccw.immd.adminfunc.smartics2.domain.Holiday;
 
 import java.util.List;
 
-public interface HolidayService {
+public interface SystemHolidayService {
 
     List<Holiday> listAll();
 }

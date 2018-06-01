@@ -8,17 +8,6 @@
     <script th:src="@{/smartics2/js/enquiry-code-info.js}"></script>
     <script th:src="@{/smartics2/js/common.js}"></script>
 
-    <!--<script th:inline="javascript" th:if="${enquiryCodeInformationDTO}">-->
-    <!--$(document).ready(function () {-->
-        <!--var submitBtnDom = jQuery('#submitBtn');-->
-        <!--submitBtnDom.on('click', function () {-->
-            <!--var form =jQuery('#searchForm');-->
-            <!--console.log(form);-->
-            <!--form.submit();-->
-        <!--});-->
-    <!--});-->
-    <!--</script>-->
-
 </head>
 <body>
 <div>
@@ -102,9 +91,7 @@
                     <div class="flex-container" style="padding-top: 10px;">
                         <div style="flex: auto;"></div>
                         <div style="padding: 15px;">
-                            <!--<a th:href="@{/smartics2/enquiry/enquiryCodeInformationSearchResult.do}">-->
-                                <input class="SmallButtonStyle pointer" id="submitBtn" style="min-width: 80px;" type="button" th:value="${#messages.msg('umps.adminfunc.common.search')}" />
-                            <!--</a>-->
+                            <input class="SmallButtonStyle pointer" id="submitBtn" style="min-width: 80px;" type="button" th:value="${#messages.msg('umps.adminfunc.common.search')}" />
                         </div>
                     </div>
                 </form>

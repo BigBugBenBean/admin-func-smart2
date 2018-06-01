@@ -1,6 +1,7 @@
 package com.pccw.immd.adminfunc.smartics2.dto;
 
 import com.pccw.immd.commons.dto.BaseDTO;
+import org.apache.commons.lang.StringUtils;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ public class EnquiryCodeInformationDTO extends BaseDTO {
     private String dobDay;
     private String dobMonth;
     private String dobYear;
+    private String dob;
     private String appointmentType;
 
     private List<EnquiryCodeInformationResultDTO> searchResults;
@@ -53,6 +55,17 @@ public class EnquiryCodeInformationDTO extends BaseDTO {
 
     public void setDobYear(String dobYear) {
         this.dobYear = dobYear;
+    }
+
+    public String getDob() {
+        if (StringUtils.isNotBlank(this.dobDay) && StringUtils.isNotBlank(this.dobMonth) && StringUtils.isNotBlank(this.dobYear)) {
+            dob = this.dobDay + "/" + this.dobMonth + "/" + this.dobYear;
+        }
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 
     public String getAppointmentType() {

@@ -1,8 +1,8 @@
 $(document).ready(function () {
 
-    var submitBtnDom = jQuery('#submitBtn');
+    var submitBtnDom = $('#submitBtn');
     submitBtnDom.on('click', function () {
-        var form =jQuery('#searchForm');
+        var form = $('#searchForm');
         console.log(form);
         if (isValidSearchCriteria()) {
             form.submit();

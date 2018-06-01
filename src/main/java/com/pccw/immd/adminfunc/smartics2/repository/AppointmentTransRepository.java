@@ -2,7 +2,7 @@ package com.pccw.immd.adminfunc.smartics2.repository;
 
 /*
  *
- * Generated May 26, 2018 10:17:47 AM by Hibernate Tools 5.0.6.Final
+ * Generated Jun 1, 2018 5:37:14 PM by Hibernate Tools 5.0.6.Final
  * FreeMarker 2.3.8
  */
 
@@ -12,6 +12,6 @@ import org.springframework.stereotype.Repository;
 
 ;
 
-@Repository ("appointmentTransRepository.smartics2")
+@Repository ("appointmentTransRepository.eservices2")
 public interface AppointmentTransRepository extends JpaRepository<AppointmentTrans,Long>{
 }
