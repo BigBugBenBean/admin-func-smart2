@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping(value = "/smartics2/enquiry")
-public class EnquiryCodeInformationController {
+public class Smartics2EnquiryCodeInformationController {
 
     @Autowired
     @Qualifier("appointmentInfoService.smartics2")
@@ -23,14 +23,14 @@ public class EnquiryCodeInformationController {
     @GetMapping(value = "/enquiryCodeInformation.do")
     public String loadEnquiryCodeInfoSearch(HttpServletRequest request, @ModelAttribute EnquiryCodeInformationDTO enquiryCodeInformationSearchDTO) {
 
-        return "/../smartics2/EnquiryCodeInformation/enquiry-code-info-search";
+        return "/../smartics2/Smartics2EnquiryCodeInformation/enquiry-code-info-search";
     }
 
     @PostMapping(value = "/enquiryCodeInformationSearchResult.do")
     public String searchEnquiryCodeInfo(HttpServletRequest request, @ModelAttribute EnquiryCodeInformationDTO enquiryCodeInformationSearchDTO) {
 
         appointmentInfoService.searchByAppTypeHkicTdnoDob(enquiryCodeInformationSearchDTO);
-        return "/../smartics2/EnquiryCodeInformation/enquiry-code-info-result";
+        return "/../smartics2/Smartics2EnquiryCodeInformation/enquiry-code-info-result";
     }
 
 }
