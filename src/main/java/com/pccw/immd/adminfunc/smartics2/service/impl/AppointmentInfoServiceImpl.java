@@ -15,7 +15,9 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service("appointmentInfoService.smartics2")
 public class AppointmentInfoServiceImpl implements AppointmentInfoService {
@@ -53,21 +55,21 @@ public class AppointmentInfoServiceImpl implements AppointmentInfoService {
 
         hql.append(" ORDER BY APPINFO.lastUpdDate DESC ");
 
-        EntityManager em = HibernateUtils.getEm();
-        Query qry = em.createQuery(hql.toString());
+        Map<String, Object> paramMap = new HashMap<String, Object>();
         if (StringUtils.isNotBlank(dto.getHkic())) {
-            qry.setParameter("hkic", dto.getHkic());
-            qry.setParameter("apmidType", Constants.APMIDTYPE_ID);
+            paramMap.put("hkic", dto.getHkic());
+            paramMap.put("apmidType", Constants.APMIDTYPE_ID);
         } else if (StringUtils.isNotBlank(dto.getTdNo()) &&
                 (StringUtils.isNotBlank(dto.getDobYear()) &&
                         StringUtils.isNotBlank(dto.getDobMonth()) &&
                         StringUtils.isNotBlank(dto.getDobDay()))) {
-            qry.setParameter("tdNo", dto.getTdNo());
-            qry.setParameter("apmidType", Constants.APMIDTYPE_TD);
-            qry.setParameter("appDob", dto.getDobYear() + dto.getDobMonth() + dto.getDobDay()); // yyyymmdd
+            paramMap.put("tdNo", dto.getTdNo());
+            paramMap.put("apmidType", Constants.APMIDTYPE_TD);
+            paramMap.put("appDob", dto.getDobYear() + dto.getDobMonth() + dto.getDobDay()); // yyyymmdd
         }
-        dto.setSearchResults(qry.getResultList());
+
+        resultList = HibernateUtils.listByHQL(hql.toString(), paramMap);
+        dto.setSearchResults(resultList);
         return dto;
     }
-
 }

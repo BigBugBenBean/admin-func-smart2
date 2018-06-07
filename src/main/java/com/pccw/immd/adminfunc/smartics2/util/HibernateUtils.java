@@ -1,11 +1,12 @@
 package com.pccw.immd.adminfunc.smartics2.util;
 
 import org.hibernate.Criteria;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import javax.persistence.TemporalType;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -67,7 +68,7 @@ public class HibernateUtils  {
         return listByHQL(HQL, params, -1, -1);
     }
 
-    public static <T> List<T> listByHQL(String HQL, Map<String, Object> params, int offset, int limit){
+    /*public static <T> List<T> listByHQL(String HQL, Map<String, Object> params, int offset, int limit){
         List<T> list = null;
         Session session = em.unwrap(Session.class);
         Query query = session.createQuery(HQL);
@@ -84,27 +85,31 @@ public class HibernateUtils  {
 
         list = query.list();
         return list;
+    }*/
+
+    public static <T> List<T> listByHQL(String HQL, Map<String, Object> params, int offset, int limit){
+        List<T> list = null;
+        Query query = em.createQuery(HQL);
+        if (params != null) {
+            for (String name : params.keySet()) {
+                setParam(query, name, params.get(name));
+            }
+        }
+
+        if ( offset > 0 )
+            query.setFirstResult(offset);
+        if ( limit > 0 )
+            query.setMaxResults(limit);
+
+        list = query.getResultList();
+        return list;
     }
 
     private static void setParam(Query query, String name, Object param) {
-        if (param instanceof String){
-            query.setString(name, (String)param);
-        } else if (param instanceof Character){
-            query.setCharacter(name, ((Character) param).charValue());
-        } else if (param instanceof Byte){
-            query.setByte(name, ((Byte) param).byteValue());
-        }else if (param instanceof Short){
-            query.setShort(name, ((Short) param).shortValue());
-        }else if (param instanceof Integer){
-            query.setInteger(name, ((Integer) param).intValue());
-        }else if (param instanceof Long){
-            query.setLong(name, ((Long) param).longValue());
-        }else if (param instanceof Float){
-            query.setFloat(name, ((Float) param).floatValue());
-        }else if (param instanceof Double){
-            query.setDouble(name, ((Double) param).doubleValue());
-        }else if (param instanceof Date){
-            query.setDate(name,(Date)param);
+        if (param instanceof Date){
+            query.setParameter(name,(Date)param, TemporalType.TIMESTAMP);
+        } else {
+            query.setParameter(name, param);
         }
     }
 
