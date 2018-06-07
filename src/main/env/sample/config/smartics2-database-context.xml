@@ -15,11 +15,16 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <import resource="classpath:config/smartics2-database-datasource-context.xml"/>
-
     <jpa:repositories
             base-package="com.pccw.immd.adminfunc.smartics2.repository"
             entity-manager-factory-ref="entityManagerFactory.smartics2"
+    />
+
+    <bean id="datasource.smartics2" class="oracle.jdbc.pool.OracleDataSource"
+          p:user="${smartics2.web.datasource.username}"
+          p:password="${smartics2.web.datasource.password}"
+          p:driverType="${smartics2.web.datasource.className}"
+          p:URL="${smartics2.web.datasource.url}"
     />
 
     <!-- Create default configuration for Hibernate -->

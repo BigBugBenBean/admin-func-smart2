@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/data/jpa
+        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <bean id="datasource.smartics2" class="oracle.jdbc.pool.OracleDataSource"
+          p:user="${smartics2.web.datasource.username}"
+          p:password="${smartics2.web.datasource.password}"
+          p:driverType="${smartics2.web.datasource.className}"
+          p:URL="${smartics2.web.datasource.url}"
+    />
+    <bean id="datasource.smartics2" class="org.springframework.jndi.JndiObjectFactoryBean"
+          p:jndiName="${smartics2.web.datasource.jndi}"
+    />
+
+</beans>
