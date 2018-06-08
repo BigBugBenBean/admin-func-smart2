@@ -112,5 +112,4 @@ public class HibernateUtils  {
             query.setParameter(name, param);
         }
     }
-
 }
