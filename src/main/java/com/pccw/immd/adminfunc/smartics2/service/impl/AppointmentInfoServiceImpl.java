@@ -36,7 +36,7 @@ public class AppointmentInfoServiceImpl implements AppointmentInfoService {
         hql.append(" SELECT new com.pccw.immd.adminfunc.smartics2.dto.EnquiryCodeInformationResultDTO( ");
         hql.append(" TO_CHAR(APPTRANS.transTime, 'dd/MM/yyyy HH24:MI:SS'), 'ROPbooking', ");
         hql.append(" TO_CHAR(QP.apptDate, 'dd/MM/yyyy') || ' ' || QP.startTime AS appDateTime, QP.officeId, ");
-        hql.append(" APPINFO.apmidCode, APPINFO.appDob, APPINFO.id.trn, APPTRANS.commChannel, APPTRANS.action, APPTRANS.enqCode) ");
+        hql.append(" APPINFO.apmidCode, APPINFO.appDob, APPINFO.id.trn, APPTRANS.createBy, APPTRANS.action, APPTRANS.enqCode) ");
         hql.append(" FROM AppointmentInfo APPINFO, AppointmentTrans APPTRANS, QuotaPlan QP ");
         hql.append(" WHERE APPINFO.id.trn = APPTRANS.trn ");
         hql.append(" AND APPINFO.quotaId = QP.quotaId ");
