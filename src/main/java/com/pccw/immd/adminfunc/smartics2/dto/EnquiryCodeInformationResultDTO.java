@@ -98,7 +98,7 @@ public class EnquiryCodeInformationResultDTO extends BaseDTO {
         this.enquiryCode = enquiryCode;
     }
 
-    public EnquiryCodeInformationResultDTO(String transDateTime, String appType, String appDateTime, String appointmentOffice, short applicantId, String dob, BigDecimal trn, String channel, String status, String enquiryCode) {
+    public EnquiryCodeInformationResultDTO(String transDateTime, String appType, String appDateTime, String appointmentOffice, String applicantId, String dob, BigDecimal trn, String channel, String status, String enquiryCode) {
         this.transDateTime = transDateTime;
         this.appType = appType;
         this.appDateTime = appDateTime;
