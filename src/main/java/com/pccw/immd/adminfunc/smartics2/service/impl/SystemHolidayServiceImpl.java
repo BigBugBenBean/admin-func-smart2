@@ -1,7 +1,7 @@
 package com.pccw.immd.adminfunc.smartics2.service.impl;
 
-import com.pccw.immd.adminfunc.smartics2.domain.SystemHoliday;
-import com.pccw.immd.adminfunc.smartics2.repository.UmSystemHolidayRepository;
+import com.pccw.immd.adminfunc.smartics2.domain.Holiday;
+import com.pccw.immd.adminfunc.smartics2.repository.HolidayRepository;
 import com.pccw.immd.adminfunc.smartics2.service.SystemHolidayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,11 +13,10 @@ import java.util.List;
 public class SystemHolidayServiceImpl implements SystemHolidayService {
 
     @Autowired
-    @Qualifier ("umSystemHolidayRepository.smartics2")
-    private UmSystemHolidayRepository umSystemHolidayRepository;
+    @Qualifier ("holidayRepository.smartics2")
+    private HolidayRepository holidayRepository;
 
-    @Override
-    public List<SystemHoliday> listAll() {
-        return umSystemHolidayRepository.findAllByOrderByHolidayDateAsc();
+    public List<Holiday> listAll() {
+        return holidayRepository.findAll();
     }
 }

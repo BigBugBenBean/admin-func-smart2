@@ -42,5 +42,5 @@
     <bean id="transactionManager.smartics2" class="org.springframework.orm.jpa.JpaTransactionManager"
           p:entityManagerFactory-ref="entityManagerFactory.smartics2"
     />
-
+    <bean class="com.pccw.immd.adminfunc.smartics2.util.HibernateHelper" />
 </beans>

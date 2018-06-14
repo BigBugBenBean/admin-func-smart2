@@ -1,6 +1,6 @@
 package com.pccw.immd.adminfunc.smartics2.web.controller;
 
-import com.pccw.immd.adminfunc.smartics2.domain.SystemHoliday;
+import com.pccw.immd.adminfunc.smartics2.domain.Holiday;
 import com.pccw.immd.adminfunc.smartics2.service.SystemHolidayService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +24,7 @@ public class Smartics2Controller {
 
     @GetMapping(value = "/index.html")
     public String indexPage(){
-        List<SystemHoliday> list = systemHolidayService.listAll();
+        List<Holiday> list = systemHolidayService.listAll();
         return "smartics2/index";
     }
 

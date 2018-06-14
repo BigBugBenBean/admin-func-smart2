@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <link rel="stylesheet" href="/adminfunc/css/style.css"/>
+
+</head>
+<body>
+
+<div th:fragment="appointmentBookingEnquiryFooter">
+    <div>-----------------------</div>
+    <div><span th:text="${#messages.msg('umps.adminfunc.appointmentEnquiry.footer.appointmentType')}"></span></div>
+    <div>-----------------------</div>
+    <div>
+        <div class="flex-container">
+            <div class="flex-item-2"><span th:text="${#messages.msg('umps.adminfunc.appointmentEnquiry.footer.ropBooking')}"></span></div>
+            <div class="flex-item-7"><span th:text="${#messages.msg('umps.adminfunc.appointmentEnquiry.footer.ropDesc')}"></span></div>
+        </div>
+        <div class="flex-container">
+            <div class="flex-item-2"><span th:text="${#messages.msg('umps.adminfunc.appointmentEnquiry.footer.sidccBooking')}"></span></div>
+            <div class="flex-item-7"><span th:text="${#messages.msg('umps.adminfunc.appointmentEnquiry.footer.sidccDesc')}"></span></div>
+        </div>
+        <div class="flex-container">
+            <div class="flex-item-2"><span th:text="${#messages.msg('umps.adminfunc.appointmentEnquiry.footer.crpBooking')}"></span></div>
+            <div class="flex-item-7"><span th:text="${#messages.msg('umps.adminfunc.appointmentEnquiry.footer.crpDesc')}"></span></div>
+        </div>
+    </div>
+    <div>-----------------------</div>
+    <div><span th:text="${#messages.msg('umps.adminfunc.appointmentEnquiry.footer.channelType')}"></span></div>
+    <div>-----------------------</div>
+    <div>
+        <div class="flex-container">
+            <div class="flex-item-2"><span>INT</span></div>
+            <div class="flex-item-7"><span>Interface</span></div>
+        </div>
+        <div class="flex-container">
+            <div class="flex-item-2"><span>ADM</span></div>
+            <div class="flex-item-7"><span>Admin Function</span></div>
+        </div>
+        <div class="flex-container">
+            <div class="flex-item-2"><span>WEB</span></div>
+            <div class="flex-item-7"><span>Web</span></div>
+        </div>
+        <div class="flex-container">
+            <div class="flex-item-2"><span>IVR</span></div>
+            <div class="flex-item-7"><span>Telephone</span></div>
+        </div>
+        <div class="flex-container">
+            <div class="flex-item-2"><span>MOB</span></div>
+            <div class="flex-item-7"><span>Mobile</span></div>
+        </div>
+        <div class="flex-container">
+            <div class="flex-item-2"><span>KSC</span></div>
+            <div class="flex-item-7"><span>Kiosk</span></div>
+        </div>
+    </div>
+    <div>-----------------------</div>
+    <div><span>Status</span></div>
+    <div>-----------------------</div>
+    <div>
+        <div class="flex-container">
+            <div class="flex-item-2"><span>Mak</span></div>
+            <div class="flex-item-7"><span>Make appointment</span></div>
+        </div>
+        <div class="flex-container">
+            <div class="flex-item-2"><span>Chg</span></div>
+            <div class="flex-item-7"><span>Change appointment</span></div>
+        </div>
+        <div class="flex-container">
+            <div class="flex-item-2"><span>Del</span></div>
+            <div class="flex-item-7"><span>Delete appointment</span></div>
+        </div>
+        <div class="flex-container">
+            <div class="flex-item-2"><span>SpO</span></div>
+            <div class="flex-item-7"><span>Original appointment left after split from group booking</span></div>
+        </div>
+        <div class="flex-container">
+            <div class="flex-item-2"><span>SpN</span></div>
+            <div class="flex-item-7"><span>New appointment created after split from group booking</span></div>
+        </div>
+        <div class="flex-container">
+            <div class="flex-item-2"><span>SpR</span></div>
+            <div class="flex-item-7"><span>Appointment remained after partial cancel appointment</span></div>
+        </div>
+        <div class="flex-container">
+            <div class="flex-item-2"><span>SpD</span></div>
+            <div class="flex-item-7"><span>Appointment removed from group booking</span></div>
+        </div>
+        <div class="flex-container">
+            <div class="flex-item-2"><span>Vir</span></div>
+            <div class="flex-item-7"><span>Assigned to virtual quota by officers</span></div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
